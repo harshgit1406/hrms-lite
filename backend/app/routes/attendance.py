@@ -23,3 +23,13 @@ def mark_attendance(attendance: schemas.AttendanceCreate, db: Session = Depends(
 @router.get("/{employee_id}", response_model=list[schemas.Attendance])
 def get_attendance(employee_id: int, db: Session = Depends(get_db)):
     return db.query(models.Attendance).filter(models.Attendance.employee_id == employee_id).all()
+
+from datetime import date as date_type
+
+@router.get("/date/{date}", response_model=list[schemas.Attendance])
+def get_attendance_by_date(date: date_type, db: Session = Depends(get_db)):
+    return db.query(models.Attendance).filter(models.Attendance.date == date).all()
+
+@router.get("/all", response_model=list[schemas.Attendance])
+def get_all_attendance(db: Session = Depends(get_db)):
+    return db.query(models.Attendance).all()
