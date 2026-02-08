@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'https://your-backend-url.up.railway.app';
+//const API_URL = 'http://127.0.0.1:8000';
 
 export const employeeAPI = {
   getAll: () => axios.get(`${API_URL}/employees/`),
@@ -12,6 +13,6 @@ export const employeeAPI = {
 export const attendanceAPI = {
   getByEmployee: (employeeId) => axios.get(`${API_URL}/attendance/${employeeId}`),
   getByDate: (date) => axios.get(`${API_URL}/attendance/date/${date}`),
-  getAll: () => axios.get(`${API_URL}/attendance/all`),
+  getAll: () => axios.get(`${API_URL}/attendance/all/records`),
   mark: (data) => axios.post(`${API_URL}/attendance/`, data)
 };
