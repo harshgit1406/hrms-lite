@@ -6,13 +6,13 @@ from app.routes import employees, attendance
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="HRMS Lite API")
-
+origins = [
+    "http://localhost:5173",
+    "https://hrms-lite-l7nnpq6m2-harshgit1406s-projects.vercel.app",
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://hrms-lite-irrd44wj7-harshgit1406s-projects.vercel.app",
-        "http://localhost:5173"
-    ],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
